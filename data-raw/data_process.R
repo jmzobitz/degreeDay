@@ -64,7 +64,7 @@ data_file <- 'data-raw/Forest Lake weather station data.csv'
 forest_lake <-read_csv(data_file,skip=15) %>%
   rename(time = 1,min_temp = 2,max_temp=3) %>%  # Rename columns
   mutate(time=mdy(time)) %>%
-  mutate(year=year(time),day=yday(time)) %>%
+  mutate(year=year(time),day=yday(time),max_temp=as.double(max_temp)) %>%
   select(year,day,min_temp,max_temp)
 
 use_data(forest_lake,overwrite = TRUE)

@@ -3,23 +3,26 @@
 \name{single_triangle}
 \alias{single_triangle}
 \title{Compute the degree day from temperature data.}
+\source{
+\url{http://biomet.ucdavis.edu/DegreeDays/DegDay.htm}
+}
 \usage{
 single_triangle(min_temp, max_temp, t_L, t_U)
 }
 \arguments{
 \item{min_temp}{Minimum daily temperature}
 
+\item{max_temp}{Maximum daily temperature}
+
 \item{t_L}{Lower bound on the temperature}
 
 \item{t_U}{Upper bound on the temperature}
-
-\item{max_tempemp}{Maximum daily temperature}
 }
 \value{
 Degree day from the list of numbers.
 }
 \description{
-\code{single_triangle} Computes the degree days from temperature data, using interpolation from
+\code{single_triangle} Computes the degree days from temperature data, using interpolation from min and max temperature.
 }
 \examples{
 

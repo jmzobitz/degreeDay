@@ -1,13 +1,13 @@
 #' Compute the degree day from temperature data.
 #'
-#' \code{single_triangle} Computes the degree days from temperature data, using interpolation from 
+#' \code{single_triangle} Computes the degree days from temperature data, using interpolation from min and max temperature.
 #'
 #' @param min_temp Minimum daily temperature
-#' @param max_tempemp Maximum daily temperature
+#' @param max_temp Maximum daily temperature
 #' @param t_L Lower bound on the temperature
 #' @param t_U Upper bound on the temperature
 #' @seealso For the equations to compute the degree day: \url{http://ipm.ucanr.edu/WEATHER/ddst_tbl.html}
-#' @source 
+#' @source \url{http://biomet.ucdavis.edu/DegreeDays/DegDay.htm}
 #' @return Degree day from the list of numbers.
 #' @examples
 #'
