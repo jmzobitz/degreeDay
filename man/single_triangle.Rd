@@ -4,16 +4,16 @@
 \alias{single_triangle}
 \title{Compute the degree day from temperature data.}
 \usage{
-single_triangle(min_t, max_t, t_L, t_U)
+single_triangle(min_temp, max_temp, t_L, t_U)
 }
 \arguments{
-\item{min_t}{Minimum daily temperature}
-
-\item{max_t}{Maximum daily temperature}
+\item{min_temp}{Minimum daily temperature}
 
 \item{t_L}{Lower bound on the temperature}
 
 \item{t_U}{Upper bound on the temperature}
+
+\item{max_tempemp}{Maximum daily temperature}
 }
 \value{
 Degree day from the list of numbers.
