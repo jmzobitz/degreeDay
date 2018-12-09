@@ -16,7 +16,7 @@
 #' @export
 
 single_triangle <-function(min_temp,max_temp,t_L,t_U) {
-  if (min_temp!=max_temp | is.na(min_temp) | is.na(max_temp)) {
+  if (min_temp!=max_temp | !is.na(min_temp) | !is.na(max_temp)) {
     if(t_L < min_temp & t_U < max_temp) {  # Intercepted by the upper threshold.
       degree_day <- 6*(max_temp+min_temp-2*t_L)/12 -(6*(max_temp-t_U)^2/(max_temp-min_temp))/12
     } else if( min_temp <= t_L & t_U < max_temp) {  # Intercepted by both thresholds.
