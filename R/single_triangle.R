@@ -18,8 +18,8 @@
 
 
 single_triangle <-function(min_temp,max_temp,t_L,t_U) {
-  min_test <- between(min_temp,t_L,t_U)
-  max_test <- between(max_temp,t_L,t_U)
+  min_test <- between(min_temp,t_L,t_U)  # Is the minimum temperature in the range of t_L and t_U?
+  max_test <- between(max_temp,t_L,t_U)  # Is the maximum temperature in the range of t_L and t_U?
   
   if (is.na(min_temp) | is.na(max_temp)) {
     degree_day<-0
