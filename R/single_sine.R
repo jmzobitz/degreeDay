@@ -34,7 +34,7 @@ single_sine <-function(min_temp,max_temp,t_L,t_U) {
   if(min_test & !max_test) {  # Intercepted by the upper threshold.
     theta_max <- asin( (t_U - 0.5*(max_temp+min_temp))/alpha) # max theshold intercept
     
-    degree_day <- 1/pi*( (0.5*(max_temp+min_temp)-t_L)*(0.5*pi-theta_max)+(t_U-t_L)*(0.5*pi-theta_max)-alpha*cos(theta_max) )
+    degree_day <- 1/pi*( (0.5*(max_temp+min_temp)-t_L)*(0.5*pi+theta_max)+(t_U-t_L)*(0.5*pi-theta_max)-alpha*cos(theta_max) )
     
     return(degree_day)
   } 
