@@ -13,25 +13,48 @@
 #'
 #' single_triangle(10,15,11,16)
 
+#' @import dplyr
 #' @export
 
+
 single_triangle <-function(min_temp,max_temp,t_L,t_U) {
-  if (is.na(min_temp) | is.na(max_temp)) {degree_day<-0}
-  else if (min_temp!=max_temp) {
-    if(t_L < min_temp & t_U < max_temp) {  # Intercepted by the upper threshold.
-      degree_day <- 6*(max_temp+min_temp-2*t_L)/12 -(6*(max_temp-t_U)^2/(max_temp-min_temp))/12
-    } else if( min_temp <= t_L & t_U < max_temp) {  # Intercepted by both thresholds.
-      degree_day = (6*(max_temp-t_L)^2/(max_temp-min_temp) - 6*(max_temp-t_U)^2/(max_temp-min_temp) )/12
-    } else if(t_L < min_temp & max_temp <= t_U ) {  # Entirely between both thresholds.
-      degree_day <- 6*(max_temp + min_temp -2*t_L)/12
-    } else if(min_temp <= t_L & max_temp <= t_U) { #Intercepted by the lower threshold
-      degree_day <- 6*(max_temp- t_L)^2/(max_temp-min_temp)/12
-    } else if(t_U < min_temp) {degree_day <- t_U-t_L} #Completely above both thresholds
-    else if(max_temp < t_L) {degree_day <- 0} #Completely below both thresholds
-    
-  } else {degree_day <- 0}
+  min_test <- between(min_temp,t_L,t_U)
+  max_test <- between(max_temp,t_L,t_U)
   
-  return(degree_day)
+  if (is.na(min_temp) | is.na(max_temp)) {
+    degree_day<-0
+    return(degree_day)
+  } 
+  
+  if(min_test & !max_test) {  # Intercepted by the upper threshold.
+      degree_day <- 6*(max_temp+min_temp-2*t_L)/12 -(6*(max_temp-t_U)^2/(max_temp-min_temp))/12
+      return(degree_day)
+  } 
+  
+  if( !min_test & !max_test & min_temp < t_L & t_U < max_temp) {  # Intercepted by both thresholds.
+      degree_day = (6*(max_temp-t_L)^2/(max_temp-min_temp) - 6*(max_temp-t_U)^2/(max_temp-min_temp) )/12
+      return(degree_day)
+  } 
+  
+  if(min_test & max_test) {  # Entirely between both thresholds.
+      degree_day <- 6*(max_temp + min_temp -2*t_L)/12
+      return(degree_day)
+  }
+  
+  if(!min_test & max_test) { #Intercepted by the lower threshold
+      degree_day <- 6*(max_temp- t_L)^2/(max_temp-min_temp)/12
+      return(degree_day)
+  }
+  
+  if( !min_test & !max_test & t_U < min_temp) { #Completely above both thresholds
+      degree_day <- t_U-t_L
+      return(degree_day)
+  } 
+ 
+  if( !min_test & !max_test & max_temp < t_L) { #Completely below both thresholds
+      degree_day <- 0
+      return(degree_day)
+   }
   
   
 }
