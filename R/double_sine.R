@@ -18,7 +18,7 @@
 #' @export
 
 
-double_triangle <-function(min_temp,max_temp,min_temp_lag,t_L,t_U) {
+double_sine <-function(min_temp,max_temp,min_temp_lag,t_L,t_U) {
  
   
   return(single_sine(min_temp,max_temp,t_L,t_U)/2+single_sine(min_temp_lag,max_temp,t_L,t_U)/2)
