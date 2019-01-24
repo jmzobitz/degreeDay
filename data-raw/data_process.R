@@ -68,3 +68,10 @@ forest_lake <-read_csv(data_file,skip=15) %>%
   select(year,day,min_temp,max_temp)
 
 use_data(forest_lake,overwrite = TRUE)
+
+
+### Add in exuviae data
+data_file <- 'data-raw/Exuviae Hunt Data 2017-18.xlsx'
+exuviae <-read_excel(data_file) %>%
+  rename(rate=2,time=1)
+use_data(exuviae,overwrite = TRUE)
